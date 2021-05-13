@@ -16,8 +16,8 @@ function accessObjKey({ continent, country }) {
 // }
 
 // Test Cases:
-console.log(accessObjKey({ continent: 'Asia', country: 'Japan' })); //Expected 'Japan'
-console.log(accessObjKey({ country: 'Sweden', continent: 'Europe' })); // Expected 'Sweden'
+// console.log(accessObjKey({ continent: 'Asia', country: 'Japan' })); //Expected 'Japan'
+// console.log(accessObjKey({ country: 'Sweden', continent: 'Europe' })); // Expected 'Sweden'
 
 // ***********************************************************
 // 2. Accessing object properties two
@@ -53,16 +53,55 @@ function accessKeyString({ continent, country }, string) {
 // }
 
 // Test Cases:
-console.log(
-  accessKeyString({ continent: 'Asia', country: 'Japan' }, 'continent')
-); //Expected 'Asia'
-console.log(
-  accessKeyString({ country: 'Sweden', continent: 'Europe' }, 'country')
-); // Expected 'Sweden'
+// console.log(
+//   accessKeyString({ continent: 'Asia', country: 'Japan' }, 'continent')
+// ); //Expected 'Asia'
+// console.log(
+//   accessKeyString({ country: 'Sweden', continent: 'Europe' }, 'country')
+// ); // Expected 'Sweden'
 
 // ***********************************************************
-// 1. Accessing object properties two
+// 4.Remove a property from an object
 // ***********************************************************
+
+// Write a function that takes an object as argument
+// It should return an object with all original object properties but the property with key 'country'
+
+//My Code
+// function removeProperty(obj) {
+//   delete obj['country'];
+//   return obj;
+// }
+
+// My Alternate Code
+function removeProperty({ country, ...rest }) {
+  return rest;
+}
+
+//Author's Code
+// function removeProperty(obj) {
+//   const { country, ...rest } = obj;
+//   return rest;
+// }
+
+// Test Cases:
+console.log(
+  removeProperty({ continent: 'Asia', country: 'Japan', region: 'Kansai' })
+);
+// Expected { continent: 'Asia', region: 'Kansai' }
+console.log(
+  removeProperty({ country: 'Sweden', continent: 'Europe', planet: 'Earth' })
+);
+// Expected { continent: 'Europe', planet: 'Earth' }
+console.log(
+  removeProperty({
+    city: 'Sacramento',
+    state: 'California',
+    country: 'USA',
+    continent: 'North America'
+  })
+);
+// Expected  { city: 'Sacramento', state: 'California', continent: 'North America' }
 
 // ***********************************************************
 // 1. Accessing object properties two
