@@ -85,27 +85,72 @@ function removeProperty({ country, ...rest }) {
 // }
 
 // Test Cases:
-console.log(
-  removeProperty({ continent: 'Asia', country: 'Japan', region: 'Kansai' })
-);
+// console.log(
+//   removeProperty({ continent: 'Asia', country: 'Japan', region: 'Kansai' })
+// );
 // Expected { continent: 'Asia', region: 'Kansai' }
-console.log(
-  removeProperty({ country: 'Sweden', continent: 'Europe', planet: 'Earth' })
-);
+// console.log(
+//   removeProperty({ country: 'Sweden', continent: 'Europe', planet: 'Earth' })
+// );
 // Expected { continent: 'Europe', planet: 'Earth' }
-console.log(
-  removeProperty({
-    city: 'Sacramento',
-    state: 'California',
-    country: 'USA',
-    continent: 'North America'
-  })
-);
+// console.log(
+//   removeProperty({
+//     city: 'Sacramento',
+//     state: 'California',
+//     country: 'USA',
+//     continent: 'North America'
+//   })
+// );
 // Expected  { city: 'Sacramento', state: 'California', continent: 'North America' }
 
 // ***********************************************************
-// 1. Accessing object properties two
+// 5. Swap object keys and values
 // ***********************************************************
+
+// Write a function that takes an object as argument
+// Somehow, the properties and keys of the object got mixed up
+// Swap the Javascript object's key with its values and return the resulting object
+
+//My Solution
+// function swapKeyAndValues(obj) {
+//   let newObj = {};
+//   for (let i in obj) {
+//     let keys = i;
+//     let values = obj[i];
+//     newObj[values] = keys;
+//   }
+
+//   return newObj;
+// }
+
+//Author's Solution
+function swapKeyAndValues(obj) {
+  return Object.keys(obj).reduce((acc, cur) => {
+    return { ...acc, [obj[cur]]: cur };
+  }, {});
+}
+
+// Test Cases:
+// console.log(
+//   swapKeyAndValues({
+//     bear: 'animal',
+//     sow: 'female',
+//     boar: 'male',
+//     cub: 'young'
+//   })
+// );
+// Expected { animal: 'bear', female: 'sow', male: 'boar', young: 'cub' }
+// console.log(
+//   swapKeyAndValues({
+//     sheep: 'animal',
+//     ewe: 'female',
+//     ram: 'male',
+//     lamb: 'young'
+//   })
+// );
+// Expected { animal: 'sheep', female: 'ewe', male: 'ram', young: 'lamb' }
+// console.log(swapKeyAndValues({ Berlin: 'city', Germany: 'country' }));
+// Expected { city: 'Berlin', country: 'Germany' }
 
 // ***********************************************************
 // 1. Accessing object properties two
