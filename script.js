@@ -271,42 +271,79 @@ function extractingInfoFromObjects(obj) {
 }
 
 // Test Cases:
-console.log(
-  extractingInfoFromObjects({
-    fn: 'Lisa',
-    ln: 'Müller',
-    age: 17,
-    size: 175,
-    weight: 67
-  })
-);
+// console.log(
+//   extractingInfoFromObjects({
+//     fn: 'Lisa',
+//     ln: 'Müller',
+//     age: 17,
+//     size: 175,
+//     weight: 67
+//   })
+// );
 // Expected {fn: 'Lisa', ln: 'Müller', size: '175cm', weight: '67kg'}
-console.log(
-  extractingInfoFromObjects({
-    fn: 'Martin',
-    ln: 'Harper',
-    age: 26,
-    email: 'martin.harper@test.de',
-    weight: 102
-  })
-);
+// console.log(
+//   extractingInfoFromObjects({
+//     fn: 'Martin',
+//     ln: 'Harper',
+//     age: 26,
+//     email: 'martin.harper@test.de',
+//     weight: 102
+//   })
+// );
 // Expected {fn: 'Martin', ln: 'Harper', weight: '102kg'}
-console.log(
-  extractingInfoFromObjects({
-    fn: 'Andrew',
-    ln: 'Harper',
-    age: 81,
-    size: 175,
-    weight: 71
-  })
-);
+// console.log(
+//   extractingInfoFromObjects({
+//     fn: 'Andrew',
+//     ln: 'Harper',
+//     age: 81,
+//     size: 175,
+//     weight: 71
+//   })
+// );
 // Expected {fn: 'Andrew', ln: 'Harper', size: '175cm', weight: '71kg'}
-console.log(
-  extractingInfoFromObjects({
-    fn: 'Matthew',
-    ln: 'Müller',
-    age: 19,
-    email: 'matthew@mueller.de'
-  })
-);
+// console.log(
+//   extractingInfoFromObjects({
+//     fn: 'Matthew',
+//     ln: 'Müller',
+//     age: 19,
+//     email: 'matthew@mueller.de'
+//   })
+// );
 // Expected {fn: 'Matthew', ln: 'Müller'}
+
+// ***********************************************************
+// 9.Replace empty strings in object with null values
+// ***********************************************************
+
+// Write a function that takes an object as argument
+// Some of the property values contain empty strings
+// Replace empty strings and strings that contain only whitespace with null values
+// Return the resulting object
+
+//My Solution
+function replaceEmptyWithNull(obj) {
+  let newObj = { ...obj };
+  for (key in newObj) {
+    if (newObj[key] === '' || newObj[key] === ' ') {
+      newObj[key] = null;
+    }
+  }
+  return newObj;
+}
+
+//Author's Solution
+// function replaceEmptyWithNull(obj) {
+//   const newObj = { ...obj };
+//   for (key in newObj) {
+//     if (newObj[key].trim() === '') newObj[key] = null;
+//   }
+//   return newObj;
+// }
+
+// Test Cases:
+// console.log(replaceEmptyWithNull({ a: 'a', b: 'b', c: '' }));
+// Expected { a: 'a', b: 'b', c: null }
+// console.log(replaceEmptyWithNull({ a: '', b: 'b', c: ' ', d: 'd' }));
+// Expected { a: null, b: 'b', c: null, d: 'd' }
+// console.log(replaceEmptyWithNull({ a: 'a', b: 'b ', c: ' ', d: '' }));
+// Expected { a: 'a', b: 'b ', c: null, d: null }
