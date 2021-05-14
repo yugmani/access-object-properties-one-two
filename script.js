@@ -169,27 +169,64 @@ function addPropertyToArrayOfObjects(arr, string) {
 }
 
 // Test Cases:
-console.log(
-  addPropertyToArrayOfObjects(
-    [
-      { city: 'Tokyo', country: 'Japan' },
-      { city: 'Bangkok', country: 'Thailand' }
-    ],
-    'Asia'
-  )
-);
+// console.log(
+//   addPropertyToArrayOfObjects(
+//     [
+//       { city: 'Tokyo', country: 'Japan' },
+//       { city: 'Bangkok', country: 'Thailand' }
+//     ],
+//     'Asia'
+//   )
+// );
 // Expected [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
-console.log(
-  addPropertyToArrayOfObjects(
-    [
-      { city: 'Stockholm', country: 'Sweden' },
-      { city: 'Paris', country: 'France' }
-    ],
-    'Europe'
-  )
-);
+// console.log(
+//   addPropertyToArrayOfObjects(
+//     [
+//       { city: 'Stockholm', country: 'Sweden' },
+//       { city: 'Paris', country: 'France' }
+//     ],
+//     'Europe'
+//   )
+// );
 // Expected [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
 
 // ***********************************************************
-// 1. Accessing object properties two
+// 7. Merge two objects with matching keys
 // ***********************************************************
+
+// Write a function that takes two objects as arguments
+// Unfortunately, the property 'country' in the second object has the wrong key
+// It should be named 'city' instead
+// Merge both objects and correct the wrong property name
+// Return the resulting object
+// It should have the properties 'planet', 'continent', 'country', 'state', and 'city'
+
+//My Solution
+function mergeObjects(obj1, obj2) {
+  obj2['city'] = obj2['country'];
+  delete obj2['country'];
+
+  return { ...obj1, ...obj2 };
+}
+
+//Author's Solution
+function myFunction(first, second) {
+  const { country, ...rest } = second;
+  return { ...first, ...rest, city: country };
+}
+
+// Test Cases:
+// console.log(
+//   mergeObjects(
+//     { continent: 'Europe', country: 'Germany' },
+//     { planet: 'Earth', country: 'Munich', state: 'Bavaria' }
+//   )
+// );
+// Expected { continent: 'Europe', country: 'Germany', planet: 'Earth', state: 'Bavaria', city: 'Munich'}
+// console.log(
+//   mergeObjects(
+//     { continent: 'North America', country: 'USA' },
+//     { planet: 'Earth', country: 'Los Angeles', state: 'California' }
+//   )
+// );
+// Expected { continent: 'North America', country: 'USA', planet: 'Earth', state: 'California', city: 'Los Angeles'}
