@@ -25,7 +25,7 @@ function accessObjKey({ continent, country }) {
 
 // Write a function that takes an object with two properties as argument
 // It should return the value of the property with key 'prop-2'
-// Tipp: you might want to use the square brackets property accessor
+// Tip: you might want to use the square brackets property accessor
 
 function accessObjProperties(obj) {
   return obj['prop-2'];
@@ -163,7 +163,7 @@ function swapKeyAndValues(obj) {
 
 //Solution
 function addPropertyToArrayOfObjects(arr, string) {
-  return arr.map(item => {
+  return arr.map((item) => {
     return { ...item, continent: string };
   });
 }
@@ -266,7 +266,7 @@ function extractingInfoFromObjects(obj) {
     fn: obj.fn,
     ln: obj.ln,
     ...(obj.size && { size: `${obj.size}cm` }),
-    ...(obj.weight && { weight: `${obj.weight}kg` })
+    ...(obj.weight && { weight: `${obj.weight}kg` }),
   };
 }
 
